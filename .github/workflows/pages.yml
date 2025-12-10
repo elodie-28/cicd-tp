@@ -46,9 +46,6 @@ jobs:
           name: github-pages
           path: allure-report
 
-      - name: Anyway...
-        run: mv allure-{report,lala} && mkdir allure-report && cp -r allure-lala/* allure-report/
-
       - name: Deploy Allure report to GH Pages
         id: deployment
         uses: actions/deploy-pages@v4
