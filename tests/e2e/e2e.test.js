@@ -21,4 +21,11 @@ describe("E2E GET /hello", () => {
     expect(res.status).toBe(200);
     expect(res.data).toBe("Hello world!");
   });
+
+  it("responds with Hello world! From [name] when name is provided", async () => {
+    const testName = "Alice";
+    const res = await axios.get(`${baseURL}/hello/${testName}`);
+    expect(res.status).toBe(200);
+    expect(res.data).toBe(`Hello world! From ${testName}`);
+  });
 });
