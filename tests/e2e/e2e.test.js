@@ -29,3 +29,22 @@ describe("E2E GET /hello", () => {
     expect(res.data).toBe(`Hello world! From ${testName}`);
   });
 });
+
+describe("E2E POST /hello", () => {
+  it("responds with Hello world", async () => {
+    const res = await axios.post(`${baseURL}/hello`);
+    expect(res.status).toBe(200);
+    expect(res.data).toBe("Hello world!");
+  });
+
+  it("responds with Hello world! From [name] when name is provided in header", async () => {
+    const testName = "Bob";
+    const res = await axios.post(`${baseURL}/hello`, {}, {
+      headers: {
+        "x-name": testName
+      }
+    });
+    expect(res.status).toBe(200);
+    expect(res.data).toBe(`Hello world! From ${testName}`);
+  });
+});
